@@ -25,7 +25,7 @@ async function run() {
         const database = client.db('travelDeals')
         const dealsCollection = database.collection('deals')
 
-        const database2 =client.db('travelDeals')
+        const database2 = client.db('travelDeals')
         const bookingCollection = database2.collection('booking')
 
         //Get Api
@@ -50,26 +50,26 @@ async function run() {
             res.json(result)
         })
         //Add Booking
-        app.post('/addbooking',async (req,res)=>{
+        app.post('/addbooking', async (req, res) => {
             const result = await bookingCollection.insertOne(req.body);
             res.send(result)
         })
         //Get All booking
-        app.get('/allbooking',async(req,res)=>{
+        app.get('/allbooking', async (req, res) => {
             const result = await bookingCollection.find({}).toArray()
             res.send(result)
         })
         //Delete Booking
-        app.delete('/deletebooking/:id',async(req,res)=>{
+        app.delete('/deletebooking/:id', async (req, res) => {
             const result = await bookingCollection.deleteOne({
-                _id:ObjectId(req.params.id)
+                _id: ObjectId(req.params.id)
             })
             res.send(result)
         })
         //My Booking
-        app.get('/mybooking/:email', async(req,res)=>{
+        app.get('/mybooking/:email', async (req, res) => {
             const result = await bookingCollection.find({
-                email:req.params.email
+                email: req.params.email
             }).toArray();
             res.send(result)
         })
