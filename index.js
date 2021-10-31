@@ -67,7 +67,7 @@ async function run() {
             res.send(result)
         })
 
-        //Update
+        //Update Deal Status
         app.put('/deletebooking/:id', async (req, res) => {
             const id = req.params.id;
             const status = req.body.status;
@@ -82,7 +82,6 @@ async function run() {
             res.json(result)
             
         })
-
         //My Booking
         app.get('/mybooking/:email', async (req, res) => {
             const result = await bookingCollection.find({
